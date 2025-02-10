@@ -1,0 +1,83 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #F4F6F9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #1E3A8A, #3F51B5);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 0 0 50px 50px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content h1 {
+    font-size: 70px;
+    margin-bottom: 20px;
+    color: #FFd700
+}
+
+.hero-content h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin: 10px 0;
+    font-style: italic;
+}
+
+/* Call-to-Action Button */
+.cta-button {
+    background: #FFD700;
+    color: #1E3A8A;
+    text-decoration: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background: #FFB700;
+    transform: scale(1.05);
+}
+
+/* Navbar */
+.navbar {
+    background: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar ul li a {
+    color: #1E3A8A;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    color: #FFD700;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Teachers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1>Teacher Management</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/students">Students</a></li>
+                    <li><a href="/teachers">Teachers</a></li>
+                    <li><a href="/courses">Courses</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Teacher List -->
+        <section class="teacher-list">
+            <h2>Teacher List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Courses</th>
+                        <th>Assigned Batches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for teacher in teachers %}
+                    <tr>
+                        <td>{{ teacher.id }}</td>
+                        <td>{{ teacher.name }}</td>
+                        <td>{{ teacher.email }}</td>
+                        <td>{{ ", ".join(teacher.courses) if teacher.courses else "None" }}</td>
+                        <td>{{ ", ".join(teacher.batches) if teacher.batches else "None" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Assign Batch to Teacher -->
+        <section class="assign-batch">
+            <h2>Assign Batch to Teacher</h2>
+            <form action="/assign_batch" method="POST">
+                <label for="teacher_id">Select Teacher:</label>
+                <select name="teacher_id" required>
+                    <option value="">-- Choose Teacher --</option>
+                    {% for teacher in teachers %}
+                    <option value="{{ teacher.id }}">{{ teacher.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <input type="text" name="batch_name" placeholder="Batch Name" required>
+
+                <button type="submit">Assign</button>
+            </form>
+        </section>
+
+        <!-- Add Teacher Form -->
+        <section class="add-teacher">
+            <h2>Add New Teacher</h2>
+            <form action="/add_teacher" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" name="name" placeholder="Enter teacher's name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Enter teacher's email" required>
+
+                <button type="submit">Add Teacher</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 School Management System | Developed by Synora</p>
+    </footer>
+</body>
+</html>
